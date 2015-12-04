@@ -2,7 +2,7 @@
 
 > Add emoji to your commits
 
-Start your commit message with an nice emoji
+Start your commit message with a nice emoji á la [atom style](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages)
 
 ## Install
 
