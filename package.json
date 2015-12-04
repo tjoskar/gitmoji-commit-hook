@@ -1,0 +1,30 @@
+{
+  "name": "emoji-commit-hook",
+  "version": "1.0.0",
+  "description": "Start the commit message with an applicable emoji",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Haha, test?\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tjoskar/emoji-commit-hook.git"
+  },
+  "keywords": [
+    "git",
+    "git-hook",
+    "emoji"
+  ],
+  "bin": {
+    "emoji-commit": "./bin/index.js"
+  },
+  "author": "Oskar Karlsson <kontakta@oskarkarlsson.nu>",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/tjoskar/emoji-commit-hook/issues"
+  },
+  "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
+  "dependencies": {
+    "inquirer": "^0.11.0"
+  }
+}
