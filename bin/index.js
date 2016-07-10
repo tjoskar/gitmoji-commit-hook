@@ -13,6 +13,9 @@ const questions = [
             name: '🐛     Fixing a bug',
             value: ':bug:'
         }, {
+            name: '✨     Further development',
+            value: ':sparkles:'
+        }, {
             name: '✅     Adding tests',
             value: ':white_check_mark:'
         }, {

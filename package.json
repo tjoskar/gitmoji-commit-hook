@@ -1,6 +1,6 @@
 {
   "name": "emoji-commit-hook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Start the commit message with an applicable emoji",
   "main": "index.js",
   "scripts": {
