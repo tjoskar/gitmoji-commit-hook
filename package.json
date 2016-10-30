@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "dependencies": {
-    "inquirer": "^0.11.0"
+    "inquirer": "^1.2.2"
   }
 }
