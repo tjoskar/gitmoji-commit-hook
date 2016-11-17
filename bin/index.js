@@ -4,7 +4,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const gitmojis = require('../node_modules/gitmoji/src/data/gitmojis.json').gitmojis;
-
+console.log(process.argv);
 const questions = [
     {
         type: 'checkbox',
@@ -13,7 +13,7 @@ const questions = [
         choices: gitmojis.map(gitmoji => {
             return {
                 name: gitmoji.emoji + '  ' + gitmoji.description,
-                value: gitmoji.code
+                value: gitmoji.emoji
             };
         })
     }
