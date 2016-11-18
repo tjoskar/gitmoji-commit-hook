@@ -4,7 +4,7 @@
   "description": "Start the commit message with an right emoji",
   "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"¯\\_(ツ)_/¯\" && exit 0"
+    "test": "eslint -c .eslintrc.js ./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
     "axios": "^0.15.2",
     "gitmoji-cli": "https://github.com/carloscuesta/gitmoji-cli",
     "inquirer": "^1.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2"
   }
 }
