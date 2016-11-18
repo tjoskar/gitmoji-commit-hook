@@ -4,7 +4,7 @@
 
 > Add emojis to your commits
 
-Start your commit message with a right emoji from [Gitmoji](https://github.com/carloscuesta/gitmoji)
+Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
 // Todo: add a GIF
 
