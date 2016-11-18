@@ -1,5 +1,7 @@
 # Gitmoji-commit-hook
 
+[![Build Status](https://travis-ci.org/welcoMattic/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/welcoMattic/gitmoji-commit-hook)
+
 > Add emojis to your commits
 
 Start your commit message with a right emoji from [Gitmoji](https://github.com/carloscuesta/gitmoji)
