@@ -2,11 +2,9 @@
 
 [![Build Status](https://travis-ci.org/welcoMattic/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/welcoMattic/gitmoji-commit-hook)
 
-> Add emojis to your commits
+> Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
-Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
-
-// Todo: add a GIF
+![Demo](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
 
 ## Install
 
