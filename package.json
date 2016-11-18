@@ -20,13 +20,14 @@
     "emoji-commit": "./bin/index.js"
   },
   "author": "Mathieu Santo Stefano--Féron <mathieu.santostefano@gmail.com>",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/welcomattic/gitmoji-commit-hook/issues"
   },
   "homepage": "https://github.com/welcomattic/gitmoji-commit-hook#readme",
   "dependencies": {
-    "gitmoji": "https://github.com/carloscuesta/gitmoji",
+    "axios": "^0.15.2",
+    "gitmoji-cli": "https://github.com/carloscuesta/gitmoji-cli",
     "inquirer": "^1.2.3"
   }
 }
