@@ -1,10 +1,10 @@
 # Gitmoji-commit-hook
 
-> Add emoji to your commits
+> Add emojis to your commits
 
 Start your commit message with a right emoji from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
-// GIF
+// Todo: add a GIF
 
 ## Install
 
@@ -20,11 +20,11 @@ In your git repo, add the following script in your `prepare-commit-msg` file
 #!/bin/bash
 
 exec < /dev/tty
-gitmoji-commit $1
+gitmoji-commit-hook $1
 ```
 
 Make it executable with `$ chmod +x ./.git/hooks/prepare-commit-msg`.
 
 ## License
 
-WTFPL
+The code is available under the [MIT](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/LICENSE) license.

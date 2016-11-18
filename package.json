@@ -2,7 +2,7 @@
   "name": "gitmoji-commit-hook",
   "version": "1.0.0",
   "description": "Start the commit message with an right emoji",
-  "main": "index.js",
+  "main": "bin/index.js",
   "scripts": {
     "test": "echo \"¯\\_(ツ)_/¯\" && exit 0"
   },
@@ -17,7 +17,7 @@
     "gitmoji"
   ],
   "bin": {
-    "emoji-commit": "./bin/index.js"
+    "gitmoji-commit-hook": "./bin/index.js"
   },
   "author": "Mathieu Santo Stefano--Féron <mathieu.santostefano@gmail.com>",
   "license": "MIT",
