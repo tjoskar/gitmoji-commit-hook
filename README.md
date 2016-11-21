@@ -16,8 +16,17 @@ please consider [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
 
 ## Install
 
+- Install gitmoji-commit-hook package
+
 ```
 $ npm install -g gitmoji-commit-hook
+```
+
+- Install the hook
+
+```
+$ cd any-git-initialized-directory
+$ gitmoji-commit-hook --init
 ```
 
 ## Usage
