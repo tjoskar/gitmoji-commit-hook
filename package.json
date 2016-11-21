@@ -1,6 +1,6 @@
 {
   "name": "gitmoji-commit-hook",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Start the commit message with an right emoji",
   "main": "bin/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/welcomattic/gitmoji-commit-hook.git"
+    "url": "git+ssh://git@github.com/tjoskar/emoji-commit-hook.git"
   },
   "keywords": [
     "git",
@@ -19,12 +19,12 @@
   "bin": {
     "gitmoji-commit-hook": "./bin/index.js"
   },
-  "author": "Mathieu Santo Stefano--Féron <mathieu.santostefano@gmail.com>",
-  "license": "MIT",
+  "author": "Oskar Karlsson <kontakta@oskarkarlsson.nu>",
+  "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/welcomattic/gitmoji-commit-hook/issues"
+    "url": "https://github.com/tjoskar/emoji-commit-hook/issues"
   },
-  "homepage": "https://github.com/welcomattic/gitmoji-commit-hook#readme",
+  "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "chalk": "^1.1.3",
