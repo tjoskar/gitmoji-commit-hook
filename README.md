@@ -6,6 +6,14 @@
 
 ![Demo](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
 
+## KISS principle
+
+This package follow KISS principle, the only thing it does is to allow you 
+to add an emoji from gitmojis list to your commit.
+
+If you're looking for some other cool feature like search in gitmojis list,
+please consider [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
+
 ## Install
 
 ```
