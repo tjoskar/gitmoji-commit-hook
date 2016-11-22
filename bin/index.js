@@ -15,11 +15,17 @@ if (process.argv[2] === '--init') {
   if (pathExists.sync('.git')) {
     const path = `${process.env.PWD}/.git/hooks`;
 
-    fs.writeFile(`${path}/prepare-commit-message`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, {mode: 755}, (err) => {
+    fs.writeFile(`${path}/prepare-commit-msg`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, (err) => {
       if (err) {
         console.error(chalk.red(`🚨  ERROR: ${err}`));
       } else {
         console.log(`${chalk.green('🎉  SUCCESS 🎉')}  gitmoji-commit-hook initialized with success.`);
+      }
+    });
+
+    fs.chmod(`${path}/prepare-commit-msg`, '755', (err) => {
+      if (err) {
+        console.error(chalk.red(`🚨  ERROR: ${err}`));
       }
     });
   } else {
