@@ -5,10 +5,10 @@ node_js:
   - 4
 
 before_install:
-  - npm install -g eslint
+  - yarn global eslint
 
 install:
-  - npm install --only=production
+  - yarn install --production
 
 cache:
   directories:
