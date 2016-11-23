@@ -6,6 +6,7 @@ const inquirer = require('inquirer');
 const axios = require('axios');
 const chalk = require('chalk');
 const pathExists = require('path-exists');
+const fileExists = require('file-exists');
 
 const gitmojis = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
 
@@ -17,25 +18,30 @@ const errorHandler = error => {
 let questions = []
 
 if (process.argv[2] === '--init') {
+  const path = `${process.env.PWD}/.git/hooks`;
+
   if (!pathExists.sync('.git')) {
     errorHandler('The directory is not a git repository.')
-  } else {
-    const path = `${process.env.PWD}/.git/hooks`;
-
-    fs.writeFile(`${path}/prepare-commit-msg`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, (err) => {
-      if (err) {
-        errorHandler(err);
-      } else {
-        fs.chmod(`${path}/prepare-commit-msg`, '755', (err) => {
-          if (err) {
-            errorHandler(err);
-          } else {
-            console.log(`${chalk.green('🎉  SUCCESS 🎉')}  gitmoji-commit-hook initialized with success.`);
-          }
-        });
-      }
-    });
   }
+
+  if (fileExists(`${path}/prepare-commit-msg`)) {
+    errorHandler(`A prepare-commit hook already exists, please remove the hook (rm ${path}/prepare-commit-msg) 
+    or install gitmoji-commit-hook manually by adding the following content info ${path}/prepare-commit-msg: \nexec < /dev/tty\ngitmoji-commit-hook $1`);
+  }
+
+  fs.writeFile(`${path}/prepare-commit-msg`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, (err) => {
+    if (err) {
+      errorHandler(err);
+    } else {
+      fs.chmod(`${path}/prepare-commit-msg`, '755', (err) => {
+        if (err) {
+          errorHandler(err);
+        } else {
+          console.log(`${chalk.green('🎉  SUCCESS 🎉')}  gitmoji-commit-hook initialized with success.`);
+        }
+      });
+    }
+  });
 } else {
   axios.get(gitmojis)
     .then(res => {
