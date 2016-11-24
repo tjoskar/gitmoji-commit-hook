@@ -20,7 +20,7 @@
     "gitmoji-commit-hook": "./bin/index.js"
   },
   "author": "Oskar Karlsson <kontakta@oskarkarlsson.nu>",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tjoskar/emoji-commit-hook/issues"
   },
