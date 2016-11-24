@@ -1,6 +1,6 @@
 # Gitmoji-commit-hook
 
-[![Build Status](https://travis-ci.org/welcoMattic/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/welcoMattic/gitmoji-commit-hook)
+[![Build Status](https://travis-ci.org/tjoskar/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/tjoskar/gitmoji-commit-hook)
 
 > Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
@@ -21,7 +21,7 @@ $ gitmoji-commit-hook --init
 
 ## Usage 
 
-![Demo](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
+![Demo](https://github.com/tjoskar/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
 
 ## KISS principle
 
@@ -33,4 +33,4 @@ please consider [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
 
 ## License
 
-The code is available under the [MIT](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/LICENSE) license.
+The code is available under the [MIT](https://github.com/tjoskar/gitmoji-commit-hook/blob/master/LICENSE) license.
