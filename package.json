@@ -1,10 +1,10 @@
 {
-  "name": "emoji-commit-hook",
-  "version": "1.0.1",
-  "description": "Start the commit message with an applicable emoji",
-  "main": "index.js",
+  "name": "gitmoji-commit-hook",
+  "version": "2.0.0",
+  "description": "Start the commit message with an right emoji",
+  "main": "bin/index.js",
   "scripts": {
-    "test": "echo \"Haha, test?\" && exit 0"
+    "test": "eslint -c .eslintrc.js ./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -13,10 +13,11 @@
   "keywords": [
     "git",
     "git-hook",
-    "emoji"
+    "emoji",
+    "gitmoji"
   ],
   "bin": {
-    "emoji-commit": "./bin/index.js"
+    "gitmoji-commit-hook": "./bin/index.js"
   },
   "author": "Oskar Karlsson <kontakta@oskarkarlsson.nu>",
   "license": "WTFPL",
@@ -25,6 +26,13 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "dependencies": {
-    "inquirer": "^1.2.2"
+    "axios": "^0.15.2",
+    "chalk": "^1.1.3",
+    "file-exists": "^2.0.0",
+    "inquirer": "^1.2.3",
+    "path-exists": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2"
   }
 }

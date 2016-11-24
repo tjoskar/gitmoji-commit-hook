@@ -1,33 +1,36 @@
-# Emoji-commit-hook
+# Gitmoji-commit-hook
 
-> Add emoji to your commits
+[![Build Status](https://travis-ci.org/welcoMattic/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/welcoMattic/gitmoji-commit-hook)
 
-Start your commit message with a nice emoji á la [atom style](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages)
+> Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
 ## Install
 
-```
-$ npm install -g emoji-commit-hook
-```
-
-
-## Usage
-
-Add the following script in your `prepare-commit-msg` for your favorite git repo:
+- Install gitmoji-commit-hook package
 
 ```
-#!/bin/bash
-
-exec < /dev/tty
-emoji-commit $1
+$ npm install -g gitmoji-commit-hook
 ```
 
-TODO: Create a `emoji-commit --init` script. It should be fairly easy.
+- Install the hook
 
-Magic:
+```
+$ cd any-git-initialized-directory
+$ gitmoji-commit-hook --init
+```
 
-![Demo](/demo.gif)
+## Usage 
+
+![Demo](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
+
+## KISS principle
+
+This package follow KISS principle, the only thing it does is to allow you 
+to add an emoji from gitmojis list to your commit.
+
+If you're looking for some other cool feature like search in gitmojis list,
+please consider [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
 
 ## License
 
-WTFPL
+The code is available under the [MIT](https://github.com/welcoMattic/gitmoji-commit-hook/blob/master/LICENSE) license.

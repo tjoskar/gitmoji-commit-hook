@@ -3,90 +3,71 @@
 
 const fs = require('fs');
 const inquirer = require('inquirer');
+const axios = require('axios');
+const chalk = require('chalk');
+const pathExists = require('path-exists');
+const fileExists = require('file-exists');
 
-const questions = [
-    {
-        type: 'list',
-        name: 'type',
-        message: 'Select the type of change that you\'re committing:',
-        choices: [{
-            name: '🐛     Fixing a bug',
-            value: ':bug:'
-        }, {
-            name: '✨     Further development',
-            value: ':sparkles:'
-        }, {
-            name: '✅     Adding tests',
-            value: ':white_check_mark:'
-        }, {
-            name: '🎨     Improving the format/structure of the code',
-            value: ':art:'
-        }, {
-            name: '📝     Writing docs',
-            value: ':memo:'
-        }, {
-            name: '🏇     Improving performance',
-            value: ':racehorse:'
-        }, {
-            name: '🚱     Plugging memory leaks',
-            value: ':non-potable_water:'
-        }, {
-            name: '🔥     When removing code or files',
-            value: ':fire:'
-        }, {
-            name: '💚     Fixing the CI build',
-            value: ':green_heart:'
-        }, {
-            name: '🔒     Dealing with security',
-            value: ':lock:'
-        }, {
-            name: '⬆️     Upgrading dependencies',
-            value: ':arrow_up:'
-        }, {
-            name: '⬇️     Downgrading dependencies',
-            value: ':arrow_down:'
-        }, {
-            name: '👕     Removing linter warnings',
-            value: ':shirt:'
-        }, {
-            name: '🐧     Fixing something on Linux',
-            value: ':penguin:'
-        }, {
-            name: '🍎     Fixing something on Mac OS',
-            value: ':apple:'
-        }, {
-            name: '🏁     Fixing something on Windows',
-            value: ':checkered_flag:'
-        }, {
-            name: '🐥     Add or update config files like .gitignore',
-            value: ':hatched_chick:'
-        }, {
-            name: '⚡     Add a new feature',
-            value: ':zap:'
-        }, {
-            name: `🌵     I don't like emojis`,
-            value: ''
-        }]
-    }, {
-        type: 'input',
-        name: 'issue',
-        message: 'Issue number'
-    }
-];
+const gitmojis = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
 
-const writeCommitMessage = answers => {
-
-    let commitMsg = fs.readFileSync(process.argv[2]);
-
-    const emoji = answers.type;
-    const issue = answers.issue ? `#${answers.issue} ` : '';
-    commitMsg = `${emoji} ${issue}\n${commitMsg}`;
-
-    fs.writeFileSync(process.argv[2], commitMsg);
-
-    process.exit(0);
+const errorHandler = error => {
+  console.error(chalk.red(`🚨  ERROR: ${error}`));
+  process.exit(1);
 };
 
-if(/COMMIT_EDITMSG/g.test(process.argv[2])) {
-    inquirer.prompt(questions, writeCommitMessage);
+let questions = []
+
+if (process.argv[2] === '--init') {
+  const path = `${process.env.PWD}/.git/hooks`;
+
+  if (!pathExists.sync('.git')) {
+    errorHandler('The directory is not a git repository.')
+  }
+
+  if (fileExists(`${path}/prepare-commit-msg`)) {
+    errorHandler(`A prepare-commit hook already exists, please remove the hook (rm ${path}/prepare-commit-msg) 
+    or install gitmoji-commit-hook manually by adding the following content info ${path}/prepare-commit-msg: \nexec < /dev/tty\ngitmoji-commit-hook $1`);
+  }
+
+  fs.writeFile(`${path}/prepare-commit-msg`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, (err) => {
+    if (err) {
+      errorHandler(err);
+    } else {
+      fs.chmod(`${path}/prepare-commit-msg`, '755', (err) => {
+        if (err) {
+          errorHandler(err);
+        } else {
+          console.log(`${chalk.green('🎉  SUCCESS 🎉')}  gitmoji-commit-hook initialized with success.`);
+        }
+      });
+    }
+  });
+} else {
+  axios.get(gitmojis)
+    .then(res => {
+      questions.push({
+        type: 'checkbox',
+        name: 'emoji',
+        message: 'Select emoji(s) for your commit',
+        choices: res.data.gitmojis.map(gitmoji => {
+          return {
+            name: gitmoji.emoji + '  ' + gitmoji.description,
+            value: gitmoji.emoji
+          };
+        })
+      });
+
+      if(/COMMIT_EDITMSG/g.test(process.argv[2])) {
+        return inquirer.prompt(questions).then((answers) => {
+          let commitMsg = fs.readFileSync(process.argv[2]);
+          commitMsg = `${answers.emoji}  ${commitMsg}`;
+          fs.writeFileSync(process.argv[2], commitMsg);
+
+          process.exit(0);
+        });
+      }
+  })
+  .catch(err => {
+    errorHandler(err);
+  });
 }
