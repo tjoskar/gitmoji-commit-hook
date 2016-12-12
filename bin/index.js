@@ -25,7 +25,7 @@ if (process.argv[2] === '--init') {
   }
 
   if (fileExists(`${path}/prepare-commit-msg`)) {
-    errorHandler(`A prepare-commit hook already exists, please remove the hook (rm ${path}/prepare-commit-msg) 
+    errorHandler(`A prepare-commit hook already exists, please remove the hook (rm ${path}/prepare-commit-msg)
     or install gitmoji-commit-hook manually by adding the following content info ${path}/prepare-commit-msg: \nexec < /dev/tty\ngitmoji-commit-hook $1`);
   }
 
