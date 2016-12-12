@@ -60,7 +60,7 @@ if (process.argv[2] === '--init') {
       if(/COMMIT_EDITMSG/g.test(process.argv[2])) {
         return inquirer.prompt(questions).then((answers) => {
           let commitMsg = fs.readFileSync(process.argv[2]);
-          commitMsg = `${answers.emoji}  ${commitMsg}`;
+          commitMsg = `${answers.emoji.join(' ')}  ${commitMsg}`;
           fs.writeFileSync(process.argv[2], commitMsg);
 
           process.exit(0);
