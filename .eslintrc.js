@@ -3,11 +3,13 @@ module.exports = {
         "es6": true,
         "node": true
     },
+    "plugins": ["node"],
     "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"
     },
     "rules": {
+        "node/no-unsupported-features": ["error"],
         "accessor-pairs": "error",
         "array-bracket-spacing": "error",
         "array-callback-return": "error",
