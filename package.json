@@ -36,7 +36,7 @@
     "path-exists": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.10.2",
+    "eslint": "^3.12.2",
     "eslint-plugin-node": "^3.0.5"
   }
 }
