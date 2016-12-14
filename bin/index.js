@@ -29,7 +29,7 @@ if (process.argv[2] === '--init') {
     or install gitmoji-commit-hook manually by adding the following content info ${path}/prepare-commit-msg: \nexec < /dev/tty\ngitmoji-commit-hook $1`);
   }
 
-  fs.writeFile(`${path}/prepare-commit-msg`, `#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1`, writeError => {
+  fs.writeFile(`${path}/prepare-commit-msg`, '#!/bin/sh\nexec < /dev/tty\ngitmoji-commit-hook $1', writeError => {
     if (writeError) {
       errorHandler(writeError);
     } else {
