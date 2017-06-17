@@ -8,7 +8,9 @@ const chalk = require('chalk');
 const pathExists = require('path-exists');
 const fileExists = require('file-exists');
 
-const gitmojis = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
+const gitemojisDataFile = require('../gitmojis.json');
+
+const GITEMOJIS_URL = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
 
 const errorHandler = error => {
   console.error(chalk.red(`🚨  ERROR: ${error}`));
@@ -16,6 +18,20 @@ const errorHandler = error => {
 };
 
 let questions = []
+
+const getGitmojiList = () => {
+  return axios.get(GITEMOJIS_URL)
+    .then((res) => {
+      if (res && res.data && res.data.gitmojis) {
+        return res.data.gitmojis;
+      }
+
+      throw new Error('Could not find gitmojis as url');
+    })
+    .catch(() => {
+      return gitemojisDataFile.gitmojis;
+    });
+};
 
 if (process.argv[2] === '--init') {
   const path = `${process.env.PWD}/.git/hooks`;
@@ -43,13 +59,13 @@ if (process.argv[2] === '--init') {
     }
   });
 } else {
-  axios.get(gitmojis)
-    .then(res => {
+  getGitmojiList()
+    .then((gitmojis) => {
       questions.push({
         type: 'checkbox',
         name: 'emoji',
         message: 'Select emoji(s) for your commit',
-        choices: res.data.gitmojis.map(gitmoji => {
+        choices: gitmojis.map(gitmoji => {
           return {
             name: gitmoji.emoji + '  ' + gitmoji.description,
             value: gitmoji.emoji
@@ -66,8 +82,8 @@ if (process.argv[2] === '--init') {
           process.exit(0);
         });
       }
-  })
-  .catch(err => {
-    errorHandler(err);
-  });
+    })
+    .catch(err => {
+      errorHandler(err);
+    });
 }
