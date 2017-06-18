@@ -396,6 +396,10 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
+gitmoji-data@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gitmoji-data/-/gitmoji-data-1.0.0.tgz#650594532dae00c60cce78b1ee77bd00ba07ac5a"
+
 glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"

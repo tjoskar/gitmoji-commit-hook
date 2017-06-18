@@ -8,9 +8,8 @@ const chalk = require('chalk');
 const pathExists = require('path-exists');
 const fileExists = require('file-exists');
 
-const gitemojisDataFile = require('../gitmojis.json');
-
-const GITEMOJIS_URL = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
+const gitmojiData = require('gitmoji-data/data/gitmojis.json');
+const GITMOJI_DATA_URL = 'https://raw.githubusercontent.com/gyran/gitmoji-data/master/data/gitmojis.json';
 
 const errorHandler = error => {
   console.error(chalk.red(`🚨  ERROR: ${error}`));
@@ -20,16 +19,16 @@ const errorHandler = error => {
 let questions = []
 
 const getGitmojiList = () => {
-  return axios.get(GITEMOJIS_URL)
+  return axios.get(GITMOJI_DATA_URL)
     .then((res) => {
       if (res && res.data && res.data.gitmojis) {
         return res.data.gitmojis;
       }
 
-      throw new Error('Could not find gitmojis as url');
+      throw new Error('Could not find gitmojis at url');
     })
     .catch(() => {
-      return gitemojisDataFile.gitmojis;
+      return gitmojiData.gitmojis;
     });
 };
 
