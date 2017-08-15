@@ -19,13 +19,17 @@ $ cd any-git-initialized-directory
 $ gitmoji-commit-hook --init
 ```
 
-## Usage 
+## Usage
 
 ![Demo](https://github.com/tjoskar/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
 
+## Emoji Meanings
+
+A list of available emojis and their associated meanings can be found at [gitmoji.carloscuesta.me](https://gitmoji.carloscuesta.me/)
+
 ## KISS principle
 
-This package follow KISS principle, the only thing it does is to allow you 
+This package follow KISS principle, the only thing it does is to allow you
 to add an emoji from gitmojis list to your commit.
 
 If you're looking for some other cool feature like search in gitmojis list,
