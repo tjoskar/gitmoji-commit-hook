@@ -33,7 +33,7 @@
     "chalk": "^2.0.0",
     "file-exists": "^3.0.0",
     "gitmoji-data": "^1.0.0",
-    "inquirer": "^3.0.2",
+    "inquirer": "^4.0.0",
     "path-exists": "^3.0.0"
   },
   "devDependencies": {
