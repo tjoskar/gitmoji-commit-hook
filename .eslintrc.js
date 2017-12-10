@@ -217,7 +217,7 @@ module.exports = {
         "radix": "error",
         "require-jsdoc": "off",
         "rest-spread-spacing": "error",
-        "semi": "off",
+        "semi": ["error", "always"],
         "semi-spacing": "error",
         "sort-imports": "error",
         "sort-keys": "off",
