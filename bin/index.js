@@ -3,4 +3,4 @@
 
 const { gitmojiCommitHook } = require('./lib');
 
-gitmojiCommitHook(process.argv[2])
+gitmojiCommitHook(`${process.env.PWD}/.git/hooks`, process.argv[2])

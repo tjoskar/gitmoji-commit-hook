@@ -1,0 +1,76 @@
+const { spy } = require('simple-spy');
+const {
+  rejectIf,
+  rejectIfNot,
+  prependMessage,
+  mapGitmojiItemToOption,
+  createInquirerQuestion
+} = require('./bin/lib');
+
+describe('rejectIf', () => {
+  test('reject', () => {
+    const result = rejectIf('my error message')(true)
+
+    return result.catch(error => {
+      expect(error).toBeDefined()
+    })
+  })
+
+  test('do not reject', () => {
+    const result = rejectIf('my error message')(false)
+
+    expect(result).toBe(false)
+  })
+})
+
+describe('rejectIfNot', () => {
+  test('reject', () => {
+    const result = rejectIfNot('my error message')(true)
+
+    expect(result).toBe(true)
+  })
+
+  test('do not reject', () => {
+    const result = rejectIfNot('my error message')(false)
+
+    return result.catch(error => {
+      expect(error).toBeDefined()
+    })
+  })
+})
+
+test('Prepend a message', () => {
+  const getMessage = spy(() => Promise.resolve('World'))
+  const putMessage = spy(() => Promise.resolve())
+  const fileName = 'myfile.txt'
+  const message = 'Hello'
+
+  return prependMessage(getMessage, putMessage)(fileName)(message)
+    .then(() => {
+      expect(getMessage.args[0][0]).toBe(fileName)
+      expect(putMessage.args[0][0]).toBe(fileName)
+      expect(putMessage.args[0][1]).toBe('Hello  World')
+    })
+})
+
+test('Map gitmoji item to an option', () => {
+  const gitmoji = {
+    emoji: 'a',
+    description: 'Something awesome'
+  }
+
+  const result = mapGitmojiItemToOption(gitmoji)
+
+  expect(result.value).toEqual('a')
+  expect(result.name).toEqual('a  Something awesome')
+})
+
+test('Create Inquirer question', () => {
+  const choices = [{
+    name: 'Something',
+    value: 's'
+  }]
+  const result = createInquirerQuestion(choices)
+
+  expect(result[0].choices).toBe(choices)
+})
