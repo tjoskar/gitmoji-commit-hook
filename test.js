@@ -25,13 +25,13 @@ describe('rejectIf', () => {
 });
 
 describe('rejectIfNot', () => {
-  test('reject', () => {
+  test('do not reject', () => {
     const result = rejectIfNot('my error message')(true);
 
     expect(result).toBe(true);
   });
 
-  test('do not reject', () => {
+  test('reject', () => {
     const result = rejectIfNot('my error message')(false);
 
     return result.catch(error => {
