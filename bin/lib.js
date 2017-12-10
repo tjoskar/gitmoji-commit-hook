@@ -13,7 +13,7 @@ const writeFile = promisify(fs.writeFile)
 const readFile = promisify(fs.readFile)
 const chmod = promisify(fs.chmod)
 
-const gitmojiUrl = 'https://raw.githubusercontent.com/gyran/gitmoji-data/master/data/gitmojis.json'
+const gitmojiUrl = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json'
 const prepareCommitMsgFileName = 'prepare-commit-msg'
 
 const gitmojiCommitHookComand = `#!/bin/sh
