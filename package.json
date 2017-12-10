@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "axios": "^0.16.0",
