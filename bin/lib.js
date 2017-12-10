@@ -71,6 +71,32 @@ function prependMessage(getMessage, putMessage) {
 
 const prependMessageToFile = prependMessage(readFile, writeFile)
 
+function getGitmojiBlacklist() {
+  return fileExists(`${process.env.PWD}/package.json`)
+    .then(exist => exist ? require(`${process.env.PWD}/package.json`) : {})
+    .then(packageJson => packageJson.gitmoji || {})
+    .then(gitmoji => gitmoji.blacklist || [])
+}
+
+function seperateChoices(choices) {
+  return blacklist => {
+    if (blacklist.length === 0) {
+      return choices;
+    }
+    return [
+      ...choices.filter(choice => !blacklist.includes(choice.type)),
+      new inquirer.Separator(),
+      ...choices.filter(choice => blacklist.includes(choice.type)),
+      new inquirer.Separator()
+    ]
+  }
+}
+
+function seperateBlacklistEmojis(choices) {
+  return getGitmojiBlacklist()
+    .then(seperateChoices(choices))
+}
+
 function printInitSuccess() {
   console.log(`${chalk.green('🎉  SUCCESS 🎉')}  gitmoji-commit-hook initialized with success.`)
 }
@@ -78,7 +104,8 @@ function printInitSuccess() {
 function mapGitmojiItemToOption(gitmoji) {
   return {
     name: gitmoji.emoji + '  ' + gitmoji.description,
-    value: gitmoji.emoji
+    value: gitmoji.emoji,
+    type: gitmoji.name
   }
 }
 
@@ -101,6 +128,7 @@ function gitmojiCommitHook(gitHookPath, commitFile) {
   } else if (isCommitEditMsgFile(commitFile)) {
     getGitmojiList()
       .then(map(mapGitmojiItemToOption))
+      .then(seperateBlacklistEmojis)
       .then(createInquirerQuestion)
       .then(inquirer.prompt)
       .then(answers => answers.emoji)
@@ -116,5 +144,6 @@ module.exports = {
   gitmojiCommitHook,
   prependMessage,
   mapGitmojiItemToOption,
-  createInquirerQuestion
+  createInquirerQuestion,
+  seperateChoices
 }

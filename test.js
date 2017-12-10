@@ -4,7 +4,8 @@ const {
   rejectIfNot,
   prependMessage,
   mapGitmojiItemToOption,
-  createInquirerQuestion
+  createInquirerQuestion,
+  seperateChoices
 } = require('./bin/lib');
 
 describe('rejectIf', () => {
@@ -73,4 +74,32 @@ test('Create Inquirer question', () => {
   const result = createInquirerQuestion(choices)
 
   expect(result[0].choices).toBe(choices)
+})
+
+test('Seperate choices', () => {
+  const choices = [{
+    type: ':cat:'
+  }, {
+    type: ':dog:'
+  }]
+  const blacklist = [':dog:']
+
+  const result = seperateChoices(choices)(blacklist)
+
+  expect(result[0]).toEqual({ 'type': ':cat:' })
+  expect(result[1].type).toEqual('separator')
+  expect(result[2]).toEqual({ 'type': ':dog:' })
+})
+
+test('Return same list if no blacklist', () => {
+  const choices = [{
+    type: ':cat:'
+  }, {
+    type: ':dog:'
+  }]
+  const blacklist = []
+
+  const result = seperateChoices(choices)(blacklist)
+
+  expect(result).toBe(choices)
 })

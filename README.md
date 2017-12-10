@@ -23,6 +23,21 @@ $ gitmoji-commit-hook --init
 
 ![Demo](https://github.com/tjoskar/gitmoji-commit-hook/blob/master/demo.gif?raw=true)
 
+## Config
+
+You can put unwanted emojis in a blacklist section by adding the name in a blacklist array in your `package.json`:
+
+```json
+{
+  "gitmoji": {
+    "blacklist": [
+      "card-file-box",
+      "beers"
+    ]
+  }
+}
+```
+
 ## Emoji Meanings
 
 A list of available emojis and their associated meanings can be found at [gitmoji.carloscuesta.me](https://gitmoji.carloscuesta.me/)
