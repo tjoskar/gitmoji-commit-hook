@@ -4,7 +4,8 @@
   "description": "Start the commit message with an right emoji",
   "main": "bin/index.js",
   "scripts": {
-    "test": "eslint -c .eslintrc.js ./bin/index.js"
+    "lint": "eslint -c .eslintrc.js ./bin/*.js test.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,18 +27,21 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
-    "axios": "^0.16.0",
+    "axios": "^0.17.0",
     "chalk": "^2.0.0",
-    "file-exists": "^3.0.0",
-    "gitmoji-data": "^1.0.0",
-    "inquirer": "^3.0.2",
-    "path-exists": "^3.0.0"
+    "es6-promisify": "^5.0.0",
+    "file-exists": "^5.0.0",
+    "inquirer": "^4.0.1",
+    "path-exists": "^3.0.0",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "eslint": "^4.1.0",
-    "eslint-plugin-node": "^5.0.0"
+    "eslint-plugin-node": "^5.0.0",
+    "jest": "^21.2.1",
+    "simple-spy": "^2.2.1"
   }
 }
