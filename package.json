@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "axios": "^0.17.0",
     "chalk": "^2.0.0",
+    "es6-promisify": "^5.0.0",
     "file-exists": "^5.0.0",
     "inquirer": "^4.0.1",
     "path-exists": "^3.0.0",
