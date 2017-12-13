@@ -42,6 +42,6 @@
     "eslint": "^4.1.0",
     "eslint-plugin-node": "^5.0.0",
     "jest": "^21.2.1",
-    "simple-spy": "^2.1.0"
+    "simple-spy": "^2.2.1"
   }
 }
