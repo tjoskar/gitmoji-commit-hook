@@ -34,7 +34,7 @@
     "chalk": "^2.0.0",
     "es6-promisify": "^6.0.0",
     "file-exists": "^5.0.0",
-    "inquirer": "^5.0.0",
+    "inquirer": "^6.0.0",
     "path-exists": "^3.0.0",
     "ramda": "^0.25.0"
   },
