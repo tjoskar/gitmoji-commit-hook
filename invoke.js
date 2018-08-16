@@ -1,4 +1,4 @@
 
-const { gitmojiCommitHook } = require('./bin/lib')
+const { gitmojiCommitHook } = require('./bin/lib');
 
-gitmojiCommitHook(`${process.env.PWD}/mock_hooks`, process.argv[2])
+gitmojiCommitHook(`${process.env.PWD}/mock_hooks`, process.argv[2]);
