@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const { promisify } = require('es6-promisify');
+const { promisify } = require('util');
 const inquirer = require('inquirer');
 const axios = require('axios');
 const chalk = require('chalk');

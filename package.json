@@ -27,21 +27,20 @@
   },
   "homepage": "https://github.com/tjoskar/emoji-commit-hook#readme",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "chalk": "^2.4.1",
-    "es6-promisify": "^6.0.0",
+    "axios": "^0.19.0",
+    "chalk": "^2.4.2",
     "file-exists": "^5.0.1",
-    "inquirer": "^6.2.2",
-    "path-exists": "^3.0.0",
-    "ramda": "^0.26.0"
+    "inquirer": "^6.5.0",
+    "path-exists": "^4.0.0",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
-    "eslint": "^5.3.0",
-    "eslint-plugin-node": "^8.0.0",
-    "jest": "^23.5.0",
-    "simple-spy": "^2.2.1"
+    "eslint": "^6.1.0",
+    "eslint-plugin-node": "^9.1.0",
+    "jest": "^24.8.0",
+    "simple-spy": "^3.0.1"
   }
 }
