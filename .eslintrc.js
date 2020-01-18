@@ -8,7 +8,10 @@ module.exports = {
     "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "describe": "readonly",
+        "test": "readonly",
+        "expect": "readonly",
     },
     "parserOptions": {
         "ecmaVersion": 2019
