@@ -1,17 +1,11 @@
 'use strict';
 
-const fs = require('fs');
-const { promisify } = require('util');
+const { writeFile, readFile, chmod } = require('fs').promises;
 const inquirer = require('inquirer');
-const axios = require('axios');
+const fetch = require('node-fetch');
 const chalk = require('chalk');
 const pathExists = require('path-exists');
 const fileExists = require('file-exists');
-const { map, path, test, join } = require('ramda');
-
-const writeFile = promisify(fs.writeFile);
-const readFile = promisify(fs.readFile);
-const chmod = promisify(fs.chmod);
 
 const gitmojiUrl = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
 const prepareCommitMsgFileName = 'prepare-commit-msg';
@@ -24,7 +18,7 @@ gitmoji-commit-hook $1
 const errorMessage = {
   notGit: 'The directory is not a git repository.',
   commitHookExist: `A prepare-commit hook already exists, please remove the hook (rm .git/hooks/${prepareCommitMsgFileName}) or install gitmoji-commit-hook manually by adding the following content info .git/hooks/\n\n${prepareCommitMsgFileName}:${gitmojiCommitHookComand}`,
-  gitmojiParse: 'Could not find gitmojis at url'
+  gitmojiParse: `Could not find gitmojis at ${gitmojiUrl}.`
 };
 
 function errorHandler(error) {
@@ -40,10 +34,16 @@ function rejectIfNot(errorMsg) {
   return val => val ? val : Promise.reject(new Error(errorMsg));
 }
 
-function getGitmojiList() {
-  return axios.get(gitmojiUrl)
-    .then(path(['data', 'gitmojis']))
-    .then(rejectIfNot(errorMessage.gitmojiParse));
+async function getGitmojiList() {
+  try {
+    const { gitmojis } = await fetch(gitmojiUrl).then(r => r.json());
+    if (!gitmojis) {
+      throw new Error(errorMessage.gitmojiParse);
+    }
+    return gitmojis;
+  } catch (error) {
+    throw new Error(errorMessage.gitmojiParse + ` ${error.message}`);
+  }
 }
 
 function assertGitRepository() {
@@ -118,7 +118,7 @@ function createInquirerQuestion(emojis) {
   }];
 }
 
-const isCommitEditMsgFile = test(/COMMIT_EDITMSG/g);
+const isCommitEditMsgFile = stringToTest => /COMMIT_EDITMSG/g.test(stringToTest);
 
 function gitmojiCommitHook(gitHookPath, commitFile) {
   if (commitFile === '--init') {
@@ -127,12 +127,12 @@ function gitmojiCommitHook(gitHookPath, commitFile) {
       .catch(errorHandler);
   } else if (isCommitEditMsgFile(commitFile)) {
     getGitmojiList()
-      .then(map(mapGitmojiItemToOption))
+      .then(emojis => emojis.map(mapGitmojiItemToOption))
       .then(seperateBlacklistEmojis)
       .then(createInquirerQuestion)
       .then(inquirer.prompt)
       .then(answers => answers.emoji)
-      .then(join(' '))
+      .then(answers => answers.join(' '))
       .then(prependMessageToFile(commitFile))
       .catch(errorHandler);
   }

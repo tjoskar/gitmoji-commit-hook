@@ -1,0 +1,13 @@
+{
+  "extends": ["config:base"],
+  "assignees": ["tjoskar"],
+  "commitMessagePrefix": "⬆️",
+  "prBodyNotes": ["{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"],
+  "reviewers": ["tjoskar"],
+  "packageRules": [
+    {
+      "depTypeList": ["devDependencies"],
+      "automerge": true
+    }
+  ]
+}
