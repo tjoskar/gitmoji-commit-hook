@@ -50,7 +50,7 @@ test('Prepend a message', () => {
     .then(() => {
       expect(getMessage.args[0][0]).toBe(fileName);
       expect(putMessage.args[0][0]).toBe(fileName);
-      expect(putMessage.args[0][1]).toBe('Hello  World');
+      expect(putMessage.args[0][1]).toBe('Hello World');
     });
 });
 
