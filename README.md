@@ -1,6 +1,6 @@
 # Gitmoji-commit-hook
 
-[![Build Status](https://travis-ci.org/tjoskar/gitmoji-commit-hook.svg?branch=master)](https://travis-ci.org/tjoskar/gitmoji-commit-hook)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Ftjoskar%2Fgitmoji-commit-hook%2Fbadge&style=flat)](https://actions-badge.atrox.dev/tjoskar/gitmoji-commit-hook/goto)
 
 > Prepend the right emoji to your commit message from [Gitmoji](https://github.com/carloscuesta/gitmoji)
 
