@@ -34,7 +34,7 @@
     "file-exists": "^5.0.1",
     "inquirer": "^8.0.0",
     "node-fetch": "^2.6.0",
-    "path-exists": "^4.0.0"
+    "path-exists": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
