@@ -39,7 +39,7 @@
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-plugin-node": "11.1.0",
-    "jest": "27.2.3",
+    "jest": "27.2.4",
     "simple-spy": "3.0.1"
   }
 }
