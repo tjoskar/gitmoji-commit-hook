@@ -37,7 +37,7 @@
     "path-exists": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "8.4.1",
+    "eslint": "8.5.0",
     "eslint-plugin-node": "11.1.0",
     "jest": "27.4.5",
     "simple-spy": "3.0.1"
