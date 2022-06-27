@@ -33,7 +33,7 @@
     "chalk": "^4.0.0",
     "file-exists": "^5.0.1",
     "inquirer": "^8.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.0.0",
     "path-exists": "^4.0.0"
   },
   "devDependencies": {
