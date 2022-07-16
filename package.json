@@ -40,6 +40,6 @@
     "eslint": "8.20.0",
     "eslint-plugin-node": "11.1.0",
     "jest": "28.1.3",
-    "simple-spy": "3.0.1"
+    "simple-spy": "4.0.1"
   }
 }
