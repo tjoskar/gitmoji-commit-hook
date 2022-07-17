@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-'use strict';
 
-const { gitmojiCommitHook } = require('./lib');
+import process from 'node:process';
+import {gitmojiCommitHook} from './lib.js';
 
 gitmojiCommitHook(`${process.env.PWD}/.git/hooks`, process.argv[2]);
