@@ -34,7 +34,7 @@
     "chalk": "5.0.1",
     "file-exists": "5.0.1",
     "inquirer": "9.0.2",
-    "node-fetch": "3.2.9",
+    "node-fetch": "3.2.10",
     "path-exists": "5.0.0"
   },
   "devDependencies": {
