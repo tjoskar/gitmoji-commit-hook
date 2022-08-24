@@ -43,7 +43,7 @@
     "xo": "0.51.0"
   },
   "volta": {
-    "node": "16.16.0"
+    "node": "16.17.0"
   },
   "wallaby": {
     "testFramework": "vitest"
