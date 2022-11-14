@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "simple-spy": "4.0.1",
-    "vitest": "0.25.1",
+    "vitest": "0.25.2",
     "xo": "0.52.4"
   },
   "volta": {
