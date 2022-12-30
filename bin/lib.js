@@ -7,7 +7,7 @@ import {pathExists} from 'path-exists';
 import fileExists from 'file-exists';
 
 const gitmojiUrl
-  = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json';
+  = 'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/packages/gitmojis/src/gitmojis.json';
 const prepareCommitMessageFileName = 'prepare-commit-msg';
 
 const gitmojiCommitHookComand = `#!/bin/sh
