@@ -10,7 +10,7 @@ jobs:
       - name: Use Node.js v16
         uses: actions/setup-node@v2
         with:
-          node-version: "16.x"
+          node-version: "22.x"
       - name: ⬇️ Install
         run: npm ci
         env:
