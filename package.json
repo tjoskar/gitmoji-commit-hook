@@ -40,7 +40,7 @@
   "devDependencies": {
     "simple-spy": "4.0.1",
     "vitest": "3.2.6",
-    "xo": "0.52.4"
+    "xo": "2.0.2"
   },
   "volta": {
     "node": "16.17.0"
